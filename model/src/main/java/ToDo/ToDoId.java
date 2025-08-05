@@ -1,8 +1,8 @@
 package ToDo;
 
-public record TodoId(int id) {
+public record ToDoId(int id) {
 
-    public TodoId {
+    public ToDoId {
         if (id() < 1) { // insert any validation here
             throw new IllegalArgumentException("id must be positive number");
         }

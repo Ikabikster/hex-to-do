@@ -1,6 +1,6 @@
-package Group;
+package ToDoList;
 
-import User.UserId;
+import ToDo.ToDo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -10,9 +10,8 @@ import java.util.List;
 @Data
 @Accessors(chain = true, fluent = true)
 @AllArgsConstructor
-public class Group {
-    private GroupId id;
+public class ToDoList {
+    private ToDoListId id;
     private String name;
-    private List<UserId> assignees;
-
+    private List<ToDo> toDos;
 }
