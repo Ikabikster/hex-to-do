@@ -1,11 +1,13 @@
 package ToDo;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.experimental.Accessors;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 
+@Data
 @AllArgsConstructor
 @Accessors(chain = true, fluent = true)
 public class Day {

@@ -2,8 +2,10 @@ package ToDo;
 
 import User.UserId;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.experimental.Accessors;
 
+@Data
 @AllArgsConstructor
 @Accessors(chain = true, fluent = true)
 public class Todo {
