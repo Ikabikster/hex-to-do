@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NonNull;
 import lombok.experimental.Accessors;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -37,4 +38,11 @@ public class ToDo {
         return prio;
     }
 
+    public DayOfWeek getWeekday() {
+        return this.dueDay.weekday();
+    }
+
+    public LocalDate getDate() {
+        return this.dueDay.date();
+    }
 }

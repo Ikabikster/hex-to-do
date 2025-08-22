@@ -23,6 +23,4 @@ public class Day {
         this.date = date;
         this.weekday = date.getDayOfWeek();
     }
-
-
 }

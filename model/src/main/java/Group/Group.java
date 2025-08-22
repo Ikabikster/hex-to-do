@@ -15,4 +15,11 @@ public class Group {
     private String name;
     private List<UserId> assignees;
 
+    public Group addAssignee(UserId userId) {
+        if (this.assignees.contains(userId)) {
+            return this;
+        }
+        this.assignees.add(userId);
+        return this;
+    }
 }
