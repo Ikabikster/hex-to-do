@@ -9,8 +9,8 @@ import ports.out.UserRepository;
 
 public class AddUserToGroupService implements AddUserToGroupUseCase {
 
-    private UserRepository userRepository;
-    private GroupRepository groupRepository;
+    private final UserRepository userRepository;
+    private final GroupRepository groupRepository;
 
     public AddUserToGroupService(UserRepository userRepository, GroupRepository groupRepository) {
         this.userRepository = userRepository;

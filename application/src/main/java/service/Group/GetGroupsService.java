@@ -9,7 +9,7 @@ import java.util.List;
 
 public class GetGroupsService implements GetGroupsUseCase {
 
-    private GroupRepository groupRepository;
+    private final GroupRepository groupRepository;
 
     public GetGroupsService(GroupRepository groupRepository) {
         this.groupRepository = groupRepository;

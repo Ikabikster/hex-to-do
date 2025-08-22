@@ -9,8 +9,8 @@ import ports.out.ToDoRepository;
 
 public class AddToDoService implements AddToDoUseCase {
 
-    private ToDoRepository toDoRepository;
-    private ToDoListRepository toDoListRepository;
+    private final ToDoRepository toDoRepository;
+    private final ToDoListRepository toDoListRepository;
 
     public AddToDoService(ToDoRepository toDoRepository, ToDoListRepository toDoListRepository) {
         this.toDoRepository = toDoRepository;
