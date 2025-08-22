@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @Accessors(chain = true, fluent = true)
 public class ToDo {
-    private static ToDoId id;
+    public static ToDoId id;
     @NonNull
     private String title;
     private String notes;
@@ -24,10 +24,6 @@ public class ToDo {
     private PRIO prio;
     private List<Group> groups;
     private boolean done;
-
-    public static ToDoId getId() {
-        return id;
-    }
 
     public void setDone() {
         this.done = !done;

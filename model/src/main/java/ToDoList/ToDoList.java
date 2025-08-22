@@ -29,7 +29,7 @@ public class ToDoList {
 
     public ToDo getToDoById(ToDoId toDoId) {
         for (ToDo toDo : toDos) {
-            if (toDo.getId().equals(toDoId)) {
+            if (toDo.id.equals(toDoId)) {
                 return toDo;
             }
         }
