@@ -29,7 +29,7 @@ public class ToDoList {
 
     public ToDo getToDoById(ToDoId toDoId) {
         for (ToDo toDo : toDos) {
-            if (toDo.id.equals(toDoId)) {
+            if (ToDo.id.equals(toDoId)) {
                 return toDo;
             }
         }
@@ -62,6 +62,6 @@ public class ToDoList {
             toDo.setDone();
         }
         return toDos;
-    };
+    }
 
 }
