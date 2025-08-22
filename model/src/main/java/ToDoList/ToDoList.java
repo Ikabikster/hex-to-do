@@ -4,6 +4,7 @@ import ToDo.ToDo;
 import ToDo.ToDoId;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NonNull;
 import lombok.experimental.Accessors;
 
 import java.time.LocalDate;
@@ -18,8 +19,20 @@ import java.util.stream.Collectors;
 public class ToDoList {
 
     private ToDoListId id;
+    @NonNull
     private String name;
     private List<ToDo> toDos;
+
+    public ToDoList(String name, List<ToDo> toDos) {
+    }
+
+    public ToDoList addToDo(ToDo toDo) {
+        if (toDos.contains(toDo)) {
+            throw new IllegalArgumentException("ToDo already exists");
+        }
+        toDos.add(toDo);
+        return this;
+    }
 
 
     // generalized Filter for ToDos
