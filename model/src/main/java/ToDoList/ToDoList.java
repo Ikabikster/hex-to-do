@@ -8,14 +8,22 @@ import lombok.experimental.Accessors;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 @Data
 @Accessors(chain = true, fluent = true)
 @AllArgsConstructor
 public class ToDoList {
+
     private ToDoListId id;
     private String name;
     private List<ToDo> toDos;
+
+    // generalized Filter for ToDos
+    public List<ToDo> getFilteredToDos(Predicate<ToDo> filter) {
+        return toDos.stream().filter(filter).collect(Collectors.toList());
+    }
 
     // inclusive timespan, more in my line of thinking :)
     public List<ToDo> getToDosFor(LocalDate from, LocalDate to) {
@@ -30,24 +38,11 @@ public class ToDoList {
     }
 
     public List<ToDo> getToDosFor(LocalDate day) {
-        List<ToDo> returnList = new ArrayList<>();
-
-        for (ToDo toDo : toDos) {
-            if (toDo.getDate().equals(day)) {
-                returnList.add(toDo);
-            }
-        }
-        return returnList;
+        return getFilteredToDos(toDo -> toDo.getDate().equals(day));
     }
 
-    public List<ToDo> getToDoByPrio(ToDo.ToDo.PRIO prio) {
-        List<ToDo> returnList = new ArrayList<>();
-
-        for (ToDo toDo : toDos) {
-            if (toDo.getPrio().equals(prio)) {
-                returnList.add(toDo);
-            }
-        }
-        return returnList;
+    public List<ToDo> getToDoBy(ToDo.ToDo.PRIO prio) {
+        return getFilteredToDos(toDo -> toDo.getPrio().equals(prio));
     }
+
 }
