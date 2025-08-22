@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @Accessors(chain = true, fluent = true)
 public class ToDo {
-    private ToDoId id;
+    private static ToDoId id;
     @NonNull
     private String title;
     private String notes;
@@ -25,10 +25,18 @@ public class ToDo {
     private List<Group> groups;
     private boolean done;
 
+    public static ToDoId getId() {
+        return id;
+    }
+
+    public void setDone() {
+        this.done = !done;
+    }
+
     public enum PRIO {LOW, NORMAL, HIGH}
 
     public ToDo(String title, String notes, Day day) {
-        this(null, title, notes, day, null, PRIO.NORMAL, null, false);
+        this(title, notes, day, null, PRIO.NORMAL, null, false);
     }
 
     public PRIO getPrio() {
