@@ -5,6 +5,7 @@ import ports.in.CreateToDoListUseCase;
 import ports.out.ToDoListRepository;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class CreateToDoListService implements CreateToDoListUseCase {
 
@@ -16,8 +17,15 @@ public class CreateToDoListService implements CreateToDoListUseCase {
 
     @Override
     public ToDoList create(String name) {
+        Objects.requireNonNull(name, "Name darf nicht null sein");
+
         ToDoList newList = new ToDoList(name, new ArrayList<>());
-        toDoListRepository.save(newList);
-        return newList;
+        try {
+            toDoListRepository.save(newList);
+            return newList;
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

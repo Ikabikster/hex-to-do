@@ -27,9 +27,6 @@ public class ToDoList {
     }
 
     public ToDoList addToDo(ToDo toDo) {
-        if (toDos.contains(toDo)) {
-            throw new IllegalArgumentException("ToDo already exists");
-        }
         toDos.add(toDo);
         return this;
     }
@@ -71,10 +68,14 @@ public class ToDoList {
 
     public List<ToDo> changeStatus(ToDoId toDoId) {
         ToDo toDo = getToDoById(toDoId);
-        if (toDo != null) {
-            toDo.setDone();
-        }
+        toDo.setDone();
         return toDos;
     }
 
+    public boolean contains(ToDo toDo) {
+        if (toDos.contains(toDo)) {
+           return true;
+        }
+        return false;
+    }
 }

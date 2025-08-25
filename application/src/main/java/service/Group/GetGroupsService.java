@@ -6,6 +6,7 @@ import ports.in.GetGroupsUseCase;
 import ports.out.GroupRepository;
 
 import java.util.List;
+import java.util.Objects;
 
 public class GetGroupsService implements GetGroupsUseCase {
 
@@ -17,11 +18,22 @@ public class GetGroupsService implements GetGroupsUseCase {
 
     @Override
     public Group getGroup(GroupId id) {
-        return groupRepository.findById(id);
+        Objects.requireNonNull(id, "id darf nicht null sein");
+        try {
+            return groupRepository.findById(id);
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public List<Group> getAllGroups() {
-        return groupRepository.findAll();
+        try {
+            return groupRepository.findAll();
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

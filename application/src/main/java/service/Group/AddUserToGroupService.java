@@ -5,22 +5,29 @@ import Group.GroupId;
 import User.User;
 import ports.in.AddUserToGroupUseCase;
 import ports.out.GroupRepository;
-import ports.out.UserRepository;
+
+import java.util.Objects;
 
 public class AddUserToGroupService implements AddUserToGroupUseCase {
 
-    private final UserRepository userRepository;
     private final GroupRepository groupRepository;
 
-    public AddUserToGroupService(UserRepository userRepository, GroupRepository groupRepository) {
-        this.userRepository = userRepository;
+    public AddUserToGroupService(GroupRepository groupRepository) {
         this.groupRepository = groupRepository;
     }
 
     @Override
     public Group addUserToGroup(GroupId id, User user) {
-        Group group = groupRepository.findById(id);
-        group.addAssignee(user.userId());
-        return groupRepository.save(group);
+        Objects.requireNonNull(id, "id darf nicht null sein");
+        Objects.requireNonNull(user, "user darf nicht null sein");
+
+        try {
+            Group group = groupRepository.findById(id);
+            group.addAssignee(user.userId());
+            return groupRepository.save(group);
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }
